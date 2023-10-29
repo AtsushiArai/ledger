@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<h1>仕訳入力</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        仕訳番号：{{ je_form_1.je_no  }}
+        {{ description_form.as_p }}
+        <p>--------------------</p>
+        行番号：{{ je_form_1.row_no }}
+        貸借区分：{{ je_form_1.debit_credit }}
+        勘定コード：{{ je_form_1.account_code }}
+        金額：{{ je_form_1.amount }}
+        <p>--------------------</p>
+        行番号：{{ je_form_2.row_no }}
+        貸借区分：{{ je_form_2.debit_credit }}
+        勘定コード：{{ je_form_2.account_code }}
+        金額：{{ je_form_2.amount }}
+        <p>--------------------</p>
+
+        <button type="submit">仕訳登録</button>
+    </form>
+
+
+{% endblock %}

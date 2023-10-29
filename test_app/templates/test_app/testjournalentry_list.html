@@ -1,0 +1,12 @@
+<!-- https://en-junior.com/formset_add/ -->
+
+<h1>Members</h1>
+<ul>
+{% for member in object_list %}
+    <li>
+        {{ member.name }}({{ member.age }})
+    </li>
+{% empty %}
+    <li>データがありません</li>
+{% endfor %}
+<a href="{% url 'index' %}">登録ページ</a>

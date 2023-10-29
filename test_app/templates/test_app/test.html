@@ -1,0 +1,35 @@
+<!-- https://en-junior.com/formset_add/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formsetのテスト</title>
+</head>
+<body>
+    <form method='POST'>
+        {{ form.management_form }}
+
+        {% csrf_token %}
+        <br>    
+        {% for per_form in form %}
+          仕訳番号：{{ per_form.t_je_no }}
+          行番号：{{ per_form.t_row_no }}
+          貸借区分：{{ per_form.t_debit_credit }}
+          科目コード：{{ per_form.t_account_code }}
+          金額：{{ per_form.t_amount }}
+
+          <br>
+        {% endfor %}
+        <button name="btn_submit" type="submit">
+          送信する
+        </button>
+        <button name="btn_add" type="submit">
+          追加する
+        </button>
+    </form>
+    <h3>{{ message }}</h3>
+</body>
+</html>

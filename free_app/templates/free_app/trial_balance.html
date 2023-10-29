@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+        <h3>試算表</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                {% for column, item in form.items %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+                </tr>
+                {% for index, values in form.iterrows %}
+                <tr>
+                        {% for value in values %}
+                        <!-- 数値は右寄せにする。科目名は左寄せのままで良い。 -->
+                            <td>{{ value|intcomma }}</td>
+                        {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div> 
+    </div>
+{% endblock %}
+<!-- https://note.com/nssystems/n/nbc0f9d215fa0 -->
