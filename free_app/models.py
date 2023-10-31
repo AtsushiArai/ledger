@@ -35,7 +35,7 @@ class JournalEntry(models.Model):
     je_no = models.IntegerField('仕訳番号', null=False)
     row_no = models.IntegerField('仕訳行番号', null=False)
     debit_credit = models.CharField('貸借区分', null=False, max_length=2)
-    account_code = models.CharField('勘定科目CD', null=False, max_length=5)
+    account_code = models.CharField('勘定科目CD', null=False, max_length=30)
     amount = models.IntegerField('金額（税抜）', null=False, default=0)
 
     class Meta:

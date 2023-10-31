@@ -12,7 +12,7 @@ def journal_entry(request):
         # https://office54.net/python/django/views-request-post
         form_je = JournalEntryForm(request.POST)
         form_de = DescriptionForm(request.POST)
-
+        
         if form_je.is_valid() and form_de.is_valid():
             posted_je_no = request.POST.getlist('je_no')
             posted_row_no = request.POST.getlist('row_no')
