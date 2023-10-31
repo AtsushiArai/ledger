@@ -5,11 +5,11 @@ from free_app.models import JournalEntry, Description, AccountingCode, DebitCred
 class JournalEntryForm(forms.ModelForm):
     # https://note.com/ym202110/n/n6b376222f037
 
-    # debit_credit = forms.ModelChoiceField(
-    #     queryset=DebitCredit.objects.all(),
-    #     widget=forms.widgets.Select,
-    #     empty_label=None,
-    # )
+    debit_credit = forms.ModelChoiceField(
+        queryset=DebitCredit.objects.all(),
+        widget=forms.widgets.Select,
+        empty_label=None,
+    )
     
     # account_code = forms.ModelChoiceField(
     #     queryset=AccountingCode.objects.all(),

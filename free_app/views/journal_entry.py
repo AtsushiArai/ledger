@@ -18,10 +18,7 @@ def journal_entry(request):
             posted_row_no = request.POST.getlist('row_no')
             posted_debit_credit = request.POST.getlist('debit_credit')
             posted_account_code = request.POST.getlist('account_code')
-            if posted_debit_credit == 1:
-                posted_amount = request.POST.getlist('amount')
-            else:
-                posted_amount = request.POST.getlist('amount')
+            posted_amount = request.POST.getlist('amount')
 
             for i in range(0, len(posted_account_code)):
 
@@ -63,6 +60,7 @@ def journal_entry(request):
         # 2.フォームクラスの引数に作成したオブジェクトを渡す
         # 3.コンテキストでフォームクラスをHTMLテンプレートへ渡す
         je_data = JournalEntry.objects.values_list('je_no', flat=True)
+
         try:
             pre_je_no = max(je_data)
         except:
