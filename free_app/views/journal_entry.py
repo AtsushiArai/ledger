@@ -20,14 +20,16 @@ def journal_entry(request):
             posted_account_code = request.POST.getlist('account_code')
             posted_amount = request.POST.getlist('amount')
 
-            for i in range(0, len(posted_account_code)):
-
-                journal = JournalEntry(je_no = int(posted_je_no[0]),
-                                       row_no = posted_row_no[i],
-                                       debit_credit = posted_debit_credit[i],
-                                       account_code = posted_account_code[i],
-                                       amount = posted_amount[i],
-                                       )
+            for i in range(0, len(posted_row_no)):
+                if posted_amount[i] == '0':
+                    pass
+                else:
+                    journal = JournalEntry(je_no = int(posted_je_no[0]),
+                                        row_no = posted_row_no[i],
+                                        debit_credit = posted_debit_credit[i],
+                                        account_code = posted_account_code[i],
+                                        amount = posted_amount[i],
+                                        )
                 journal.created_by = request.user
                 journal.save()
 
@@ -47,11 +49,27 @@ def journal_entry(request):
 
         je_no = pre_je_no + 1
 
-        initial_values_1 = {'je_no':je_no, 'row_no':1}
-        initial_values_2 = {'je_no':je_no, 'row_no':2}
+        initial_values_1 = {'je_no':je_no, 'row_no':1, 'amount':0}
+        initial_values_2 = {'je_no':je_no, 'row_no':2, 'amount':0}
+        initial_values_3 = {'je_no':je_no, 'row_no':3, 'amount':0}
+        initial_values_4 = {'je_no':je_no, 'row_no':4, 'amount':0}
+        initial_values_5 = {'je_no':je_no, 'row_no':5, 'amount':0}
+        initial_values_6 = {'je_no':je_no, 'row_no':6, 'amount':0}
+        initial_values_7 = {'je_no':je_no, 'row_no':7, 'amount':0}
+        initial_values_8 = {'je_no':je_no, 'row_no':8, 'amount':0}
+        initial_values_9 = {'je_no':je_no, 'row_no':9, 'amount':0}
+        initial_values_10 = {'je_no':je_no, 'row_no':10, 'amount':0}
 
         je_form_1 = JournalEntryForm(initial_values_1)
         je_form_2 = JournalEntryForm(initial_values_2)
+        je_form_3 = JournalEntryForm(initial_values_3)
+        je_form_4 = JournalEntryForm(initial_values_4)
+        je_form_5 = JournalEntryForm(initial_values_5)
+        je_form_6 = JournalEntryForm(initial_values_6)
+        je_form_7 = JournalEntryForm(initial_values_7)
+        je_form_8 = JournalEntryForm(initial_values_8)
+        je_form_9 = JournalEntryForm(initial_values_9)
+        je_form_10 = JournalEntryForm(initial_values_10)
         description_form = DescriptionForm()
 
     else:
@@ -67,15 +85,39 @@ def journal_entry(request):
             pre_je_no = 0
 
         je_no = pre_je_no + 1
-        initial_values_1 = {'je_no':je_no, 'row_no':1}
-        initial_values_2 = {'je_no':je_no, 'row_no':2}
+        initial_values_1 = {'je_no':je_no, 'row_no':1, 'amount':0}
+        initial_values_2 = {'je_no':je_no, 'row_no':2, 'amount':0}
+        initial_values_3 = {'je_no':je_no, 'row_no':3, 'amount':0}
+        initial_values_4 = {'je_no':je_no, 'row_no':4, 'amount':0}
+        initial_values_5 = {'je_no':je_no, 'row_no':5, 'amount':0}
+        initial_values_6 = {'je_no':je_no, 'row_no':6, 'amount':0}
+        initial_values_7 = {'je_no':je_no, 'row_no':7, 'amount':0}
+        initial_values_8 = {'je_no':je_no, 'row_no':8, 'amount':0}
+        initial_values_9 = {'je_no':je_no, 'row_no':9, 'amount':0}
+        initial_values_10 = {'je_no':je_no, 'row_no':10, 'amount':0}
 
         # 仕訳番号のデフォルト値を反映させてformを作成する。
         je_form_1 = JournalEntryForm(initial_values_1)
         je_form_2 = JournalEntryForm(initial_values_2)
+        je_form_3 = JournalEntryForm(initial_values_3)
+        je_form_4 = JournalEntryForm(initial_values_4)
+        je_form_5 = JournalEntryForm(initial_values_5)
+        je_form_6 = JournalEntryForm(initial_values_6)
+        je_form_7 = JournalEntryForm(initial_values_7)
+        je_form_8 = JournalEntryForm(initial_values_8)
+        je_form_9 = JournalEntryForm(initial_values_9)
+        je_form_10 = JournalEntryForm(initial_values_10)
         description_form = DescriptionForm()
 
     return render(request, "free_app/journal.html", {'je_form_1':je_form_1,
                                                      'je_form_2':je_form_2,
+                                                     'je_form_3':je_form_3,
+                                                     'je_form_4':je_form_4,
+                                                     'je_form_5':je_form_5,
+                                                     'je_form_6':je_form_6,
+                                                     'je_form_7':je_form_7,
+                                                     'je_form_8':je_form_8,
+                                                     'je_form_9':je_form_9,
+                                                     'je_form_10':je_form_10,
                                                       'description_form':description_form})
 

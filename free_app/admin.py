@@ -10,7 +10,9 @@ from free_app.models import JournalEntry, AccountingCode, DebitCredit, Descripti
 # Register your models here.
 
 # -------------- 摘要 ----------------------
-admin.site.register(Description)
+@admin.register(Description)
+class Description(admin.ModelAdmin):
+    list_display = ('je_no', 'description')
 
 # -------------- 仕訳明細（一括インポート、エクスポート機能を追加） ----------------------
 # https://note.com/nssystems/n/n7cb1339f2a2c

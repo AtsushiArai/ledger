@@ -9,6 +9,7 @@ class JournalEntryForm(forms.ModelForm):
         queryset=DebitCredit.objects.all(),
         widget=forms.widgets.Select,
         empty_label=None,
+        required=False,
     )
     
     account_code = forms.ModelChoiceField(
@@ -16,6 +17,7 @@ class JournalEntryForm(forms.ModelForm):
         widget=forms.widgets.Select,
         to_field_name='account_code_id',
         empty_label=None,
+        required=False,
     )
 
     def __init__(self, *args, **kwargs):

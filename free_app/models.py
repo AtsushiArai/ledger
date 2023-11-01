@@ -36,7 +36,7 @@ class JournalEntry(models.Model):
     row_no = models.IntegerField('仕訳行番号', null=False)
     debit_credit = models.CharField('貸借区分', null=False, max_length=2)
     account_code = models.CharField('勘定科目CD', null=False, max_length=30)
-    amount = models.IntegerField('金額（税抜）', null=False, default=0)
+    amount = models.IntegerField('金額（税抜）', null=False)
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=['je_no', 'row_no'], name='unique_je_id')]
@@ -44,7 +44,7 @@ class JournalEntry(models.Model):
 
 
 class Description(models.Model):
-    je_no = models.IntegerField('仕訳番号', null=False)
+    je_no = models.IntegerField('仕訳番号', null=False, primary_key=True)
     description = models.CharField('摘要', max_length=100)
 
     class Meta:

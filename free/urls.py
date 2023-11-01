@@ -25,7 +25,7 @@ from free_app.views.profit_loss import profit_loss_statement
 from test_app.views import IndexView, TestJournalEntryListView
 
 urlpatterns = [
-    path('', journal_entry, name='index'),
+    path('', journal_entry, name='journal_entry'),
     path('trial_balance', trial_balance, name='trial_balance'),
     path('balance_sheet', balance_sheet, name='balance_sheet'),
     path('profit_loss', profit_loss_statement, name='profit_loss'),
